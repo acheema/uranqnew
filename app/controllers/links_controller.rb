@@ -4,7 +4,6 @@ class LinksController < ApplicationController
 
   def new
   	@link = Link.new
-  	#(params[:link][:title], params[:link][:title])
   end
 
   def create
