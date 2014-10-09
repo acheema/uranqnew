@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
   get 'links/show'
 
   get 'links/new'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   resources :links
+  resources :comments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
