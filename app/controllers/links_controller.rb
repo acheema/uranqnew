@@ -8,7 +8,6 @@ class LinksController < ApplicationController
 
   def create
   	@link = Link.createNewLink(params[:link][:title], params[:link][:url])
-  	render plain: "The title of the link is: " +params[:link][:title]+
-  	" and the url is " +params[:link][:url]+ "."
+  	redirect_to :controller => 'pages', :action => 'index'
   end
 end
