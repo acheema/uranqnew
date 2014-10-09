@@ -2,6 +2,7 @@ class LinksController < ApplicationController
   def show
   	@link = Link.find(params[:id])
   	@comment = Comment.new
+    @vote = Vote.new
   end
 
   def new

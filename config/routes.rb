@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'pages#index'
+
+  get 'votes/create'
+
   get 'comments/create'
 
   get 'links/show'
@@ -9,9 +13,10 @@ Rails.application.routes.draw do
   get 'links/create'
 
   devise_for :users
-  root 'pages#index'
+
   resources :links
   resources :comments
+  resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
