@@ -10,7 +10,7 @@ class LinksController < ApplicationController
   end
 
   def create
-  	@link = Link.createNewLink(params[:link][:title], params[:link][:url])
+  	@link = Link.createNewLink(params[:link][:title], params[:link][:url], params[:user_id])
   	redirect_to :controller => 'pages', :action => 'index'
   end
 end

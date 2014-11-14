@@ -1,5 +1,4 @@
-<h1>Links#new</h1>
-<p>Find me in app/views/links/new.html.erb</p>
+<h1>Share a new link!</h1>
 
  <%= form_for(@link) do |f| %>
   <% if @link.errors.any? %>
@@ -22,6 +21,7 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
+  <%= hidden_field_tag :user_id, current_user.id %>
   <div class="actions">
     <%= f.submit %>
   </div>

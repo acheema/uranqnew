@@ -1,25 +1,72 @@
-<h2><center> Uranq! </center></h2>
-<%= content_for :sidebar do %>
-  <%= link_to "Add a link", new_link_path %>
-<% end %>
-
+<style>
+  .link{
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .details{
+    font-size: 12px;
+    display: inline;
+  }
+  .votes{
+    display: inline-block;
+    overflow: hidden;
+    width: 40px;
+    height: 25px;
+    cursor: pointer;
+    background: url('http://i.stack.imgur.com/iqN2k.png');
+    background-position: 0 -25px;
+  }
+  .votes.on {
+  background-position: 0 2px;
+  }
+  #newlink{
+    text-decoration: none;
+  }
+  #comments{
+    text-decoration: none;
+    color: #888;
+    display: inline;
+    font-weight: bold;
+  }
+  #submittedby{
+    text-decoration: none;
+    color: #888;
+    font-size: x-small;
+  }
+  ul{
+    list-style-type: none;
+  }
+</style>
+<body id="main">
 <ul>
-  <% @links.each do |link| %>
-    <li><%= link_to link.title, link.url, :target => '_blank' %></li>
-    <%= link_to "comments", link %>
-
+  <% @links.order("created_at").each do |link| %>
+    <br><span class="votes"></span><br>
+    <div id=comments>
+    <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
+    </div>
+    <li><%= link_to link.title, link.url, :target => '_blank', class: "link" %></li>
+    <div id=submittedby>
+    <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " + link.user.username %><br>
+    </div>
+    <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
+    <!--
     <% if current_user && current_user.votes.where(:link_id => link.id, :up => true).present? %>
     *
   <% else %>
-    <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+    <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, class: "votes" %>
   <% end %>
-
     <% if current_user && current_user.votes.where(:link_id => link.id, :up => false).present? %>
     *
   <% else %>
-    <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
-  <% end %>
-    Votes: <%= link.votes.where(:up => true).count - link.votes.where(:up => false).count %>
+    <%= link_to "-", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post, class: "votes" %>
+  <% end %>-->
   <% end %>
 </ul>
 <%= will_paginate @links %>
+</body>
+<script>
+$('.votes').click(function () {
+  $(this).toggleClass('on');
+});
+</script>
+<html>

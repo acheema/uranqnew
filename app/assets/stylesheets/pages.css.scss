@@ -1,3 +1,30 @@
+  .link{
+    font-size: 16px;
+    background-color: White;
+    text-decoration: none;
+ 	}
+  .details{
+    font-size: 12px;
+    display: inline;
+ 	}
+  .votes{
+    font-size: 12px;
+    text-decoration: none;
+ 	}
+  #newlink{
+    text-decoration: none;
+ 	}
+  #comments{
+    text-decoration: none;
+    color: #888;
+ 	}
+  ul{
+    list-style-type: none;
+ 	}
+  #pagefooter li{
+	display:inline;
+	}
+
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/

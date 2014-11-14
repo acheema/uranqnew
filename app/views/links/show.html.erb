@@ -28,6 +28,6 @@
   <div>
   <% @link.comments.each do |comment| %>
     <p><%= comment.message %></p>
-    <p>Author: <%= comment.user.email %></p>
+    <p>Author: <%= comment.user.username %></p>
   <% end %>
 </div>

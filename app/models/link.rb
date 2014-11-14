@@ -4,8 +4,8 @@ class Link < ActiveRecord::Base
 	has_many :comments
 	has_many :votes
 
-	def self.createNewLink(linktitle, linkurl)
-		newLink = Link.new(title: linktitle, url: linkurl)
+	def self.createNewLink(linktitle, linkurl, linkid)
+		newLink = Link.new(title: linktitle, url: linkurl, user_id: linkid)
 		newLink.save!
 	end
 end
