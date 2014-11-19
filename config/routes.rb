@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
+  get 'pages/about' => 'pages#about'
+
   get 'votes/create'
 
   get 'comments/create'

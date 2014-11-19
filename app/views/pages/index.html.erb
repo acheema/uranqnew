@@ -15,6 +15,7 @@
     cursor: pointer;
     background: url('http://i.stack.imgur.com/iqN2k.png');
     background-position: 0 -25px;
+    float: left;
   }
   .votes.on {
   background-position: 0 2px;
@@ -28,6 +29,13 @@
     display: inline;
     font-weight: bold;
   }
+  #votecount{
+    text-decoration: none;
+    color: #888;
+    display: inline;
+    font-weight: bold;
+    font-size: 20px;
+  }
   #submittedby{
     text-decoration: none;
     color: #888;
@@ -36,12 +44,126 @@
   ul{
     list-style-type: none;
   }
-</style>
+  .song {
+clear:both;
+margin-bottom:18px;
+padding:8px;
+}
+
+.song-active {
+background-color:#FCE4E4;
+}
+
+.song-list-title {
+margin-bottom:4px;
+}
+
+.song-list-title a {
+font-weight:500;
+font-size:20px;
+line-height:30px;
+margin-bottom:12px;
+text-decoration:none;
+color:#3a3a3a;
+}
+
+.song-mini-pause {
+font-size:14px;
+vertical-align:2px;
+padding-left:3px;
+padding-right:2px;
+}
+
+.song-submitter {
+display:inline-block;
+font-size:16px;
+line-height:16px;
+}
+.song-submitter-avatar {
+width:32px;
+border-radius:32px;
+display:inline-block;
+vertical-align:bottom;
+}
+
+.song-submitter-name {
+display:inline-block;
+margin-left:0!important;
+}
+
+.song-comments-label {
+display:inline-block;
+margin-left:4px;
+}
+
+.song-metainfo a {
+text-decoration:none;
+margin-left:8px;
+color:#666;
+}
+.upvote-container {
+float:left;
+width:50px;
+text-align:center;
+margin-right:12px;
+}
+
+.upvote-container{
+margin-top:20px;
+text-decoration:none;
+font-size:12px;
+}
+
+.upvote-container{
+font-size:32px;
+}
+
+.arrow-up {
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-bottom:18px solid #4f535e;
+margin:5px 0 9px 7px;
+}
+
+.arrow-up.clicked {
+border-bottom:18px solid #c23c45;
+}
+
+.arrow-up:hover {
+border-bottom:18px solid #09BC06;
+cursor:pointer;
+}
+
+.vote-count {
+font-size:20px;
+margin-bottom:20px;
+}
+  </style>
 <body id="main">
 <ul>
   <% @links.order("created_at").each do |link| %>
-    <br><span class="votes"></span><br>
-    <div id=comments>
+  <div class='song'>
+    <div class='upvote-container'>
+      <div class='arrow-up'></div>
+
+      <p class='vote-count'>
+      <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
+      </p>
+      </div>
+        <div class='song-details-container'>
+          <h3 class='song-list-title song-title-link'>
+            <%= link_to link.title, link.url, :target => '_blank'%>
+          </h3>
+        <div id=submittedby>
+          <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " + link.user.username %><br>
+        </div>
+        <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
+    </div>
+  </div>
+  <!--
+    <div id=votecount>
     <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
     </div>
     <li><%= link_to link.title, link.url, :target => '_blank', class: "link" %></li>
@@ -49,7 +171,7 @@
     <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " + link.user.username %><br>
     </div>
     <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
-    <!--
+    
     <% if current_user && current_user.votes.where(:link_id => link.id, :up => true).present? %>
     *
   <% else %>
@@ -65,8 +187,8 @@
 <%= will_paginate @links %>
 </body>
 <script>
-$('.votes').click(function () {
+/*$('.votes').click(function () {
   $(this).toggleClass('on');
-});
+});*/
 </script>
 <html>
