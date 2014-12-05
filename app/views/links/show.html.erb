@@ -10,7 +10,7 @@ h1{
 <div id="content">
 <h1><%= link_to @link.title, @link.url, :target => '_blank' %></h1>
 <h4>Description</h4>
-<p> <%= @link.description %> <br> - <strong><%= @link.user.username %></strong></p> 
+<p> <%= @link.description %> <br></p> 
 <%= form_for(@comment) do |f| %>
 
 
@@ -21,7 +21,7 @@ h1{
   <% @link.comments.each do |comment| %>
   <li>
     <p><%= comment.message %></p>
-    <p><strong>Author</strong> - <%= comment.user.username %></p>
+    <p><strong>Author</strong>: <%= comment.user.username %> - <%=comment.user.position%> </p>
   </li>
   <% end %>
 </ol>
