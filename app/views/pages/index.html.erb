@@ -143,7 +143,7 @@ text-decoration: none;
       
 
       <p class='vote-count'>
-      <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
+      RQ <%=(link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
       </p>
       </div>
         <div class='song-details-container'>
@@ -156,38 +156,10 @@ text-decoration: none;
         <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
     </div>
   </div>
-  <!--
-    <div id=votecount>
-    <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
-    </div>
-    <li><%= link_to link.title, link.url, :target => '_blank', class: "link" %></li>
-    <div id=submittedby>
-    <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " + link.user.username %><br>
-    </div>
-    <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
-    
-    <% if current_user && current_user.votes.where(:link_id => link.id, :up => true).present? %>
-    *
-  <% else %>
-    <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, class: "votes" %>
-  <% end %>
-    <% if current_user && current_user.votes.where(:link_id => link.id, :up => false).present? %>
-    *
-  <% else %>
-    <%= link_to "-", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post, class: "votes" %>
-  <% end %>-->
   <% end %>
 </ul>
 <%= will_paginate @links %>
 </body>
 <script>
-function upvotearrow(link){
-  alert(link)
-      $.ajax({
-        type: 'POST',
-        url: link,
-        success: alert("K"),
-    });
-}
 </script>
 <html>
