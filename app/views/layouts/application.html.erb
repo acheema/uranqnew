@@ -14,7 +14,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Optional: Incorporate the Bootstrap JavaScript plugins -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style>
+    #content{
+      margin-left: 200px;
+    }
+    </style>
   </head>
+  
 
   <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
@@ -25,7 +31,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">uranq</a>
+      <a class="navbar-brand" href="/">uRanQ</a>
 
     </div>
 
@@ -59,6 +65,7 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+      
       <% [:notice, :error, :alert].each do |level| %>
         <% unless flash[level].blank? %>
         <div data-alert="alert" class="alert alert-<%= level %> fade in">
@@ -70,11 +77,6 @@
 		  <%= yield %>
           <%= yield :sidebar%>
       <%= javascript_include_tag "application" %>
-  
-    <!--<ol id="pagefooter">
-      <li><a href="/pages/about">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li>&copy; Uranq 2014</li>
-    </ol>-->
+    
   </body>
 </html>

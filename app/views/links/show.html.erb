@@ -1,33 +1,40 @@
+<style>
+h1{
+  text-align: center;
+}
+#content{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+</style>
+<div id="content">
 <h1><%= link_to @link.title, @link.url, :target => '_blank' %></h1>
-
+<h4>Description</h4>
+<p> <%= @link.description %> <br> - <strong><%= @link.user.username %></strong></p> 
 <%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+
+
+<br>
+<h4>Comments</h4>
+  <ol>
+  <% @link.comments.each do |comment| %>
+  <li>
+    <p><%= comment.message %></p>
+    <p><strong>Author</strong> - <%= comment.user.username %></p>
+  </li>
   <% end %>
-
-  <div class="field">
-    <%= f.label :message %><br />
-    <%= f.text_area :message, :placeholder => "Add a comment YO" %>
+</ol>
+    <br><br>
+    <div class="field">
+    <%= f.label :Add_review %><br />
+    <%= f.text_area :message, :size => "60x4" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit"%>
   </div>
 
   <%= f.hidden_field :link_id, :value => @link.id %>
 <% end %>
-
-<p>Comments:<p>
-  <div>
-  <% @link.comments.each do |comment| %>
-    <p><%= comment.message %></p>
-    <p>Author: <%= comment.user.username %></p>
-  <% end %>
+</div>
 </div>
