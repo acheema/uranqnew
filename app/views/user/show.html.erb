@@ -22,10 +22,6 @@
       </div>
       <div class="panel-body">
         <p>
-          This is the biography of the user.<br>
-          This is the biography of the user.<br>
-          This is the biography of the user.<br>
-          This is the biography of the user.<br>
           This is the biography of the user.
         </p>
       </div>
@@ -37,11 +33,13 @@
     </div>
     <div class="panel-body">
       <p>
-        Insert code to show user reviews<br>
-        Insert code to show user reviews<br>
-        Insert code to show user reviews<br>
-        Insert code to show user reviews<br>
-        Insert code to show user reviews<br>
+        <ol>
+        <% @user.comments.each do |c| %>
+          <li>
+        <%= c.message %><br><br>
+          </li>
+        <% end %>
+          </ol>
       </p>
     </div>
   </div>

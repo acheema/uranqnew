@@ -58,6 +58,10 @@ img.profile-pic {
 
 }
 
+div.actions {
+  padding: 10px;
+}
+
 #sign-up-button {
   margin-top: 5px;
 }
@@ -66,6 +70,10 @@ img.profile-pic {
   height: 34px;
   width: 38px;
   padding: 0;
+}
+
+#black-font {
+  color: black;
 }
 
 #upvotecarrot {

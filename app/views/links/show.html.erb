@@ -21,19 +21,20 @@
           <% end %>
         </ul>
       </div>
-    </div>
+      <div class="panel-heading panel-title">Add Review</div>
+      <div class="panel-body">
+        <div class="field">
+          <%= f.text_area :message, :size => "60x4" %><br>
+          <input class="btn btn-primary" id='sign-up-button' type="submit" value="Submit">
+        </div>
+      </div>
 
-    <div class="field">
-      <%= f.label :Add_review %><br />
-      <%= f.text_area :message, :size => "60x4" %>
+      <%= f.hidden_field :link_id, :value => @link.id %>
+      <% end %>
     </div>
-    <div class="actions">
-      <%= f.submit "Submit"%>
-    </div>
+  </div>
 
-    <%= f.hidden_field :link_id, :value => @link.id %>
-    <% end %>
-    </div>
+
 </div>
 <div class='col-md-2'></div>
-  
+
