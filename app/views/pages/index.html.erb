@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <body>
   <ul>
     <% @links.order("created_at").each do |link| %>
@@ -47,5 +48,171 @@ function upvotearrow(link){
         success: alert("K"),
     });
 }
+=======
+<style>
+  .link{
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .details{
+    font-size: 12px;
+    display: inline;
+  }
+  #newlink{
+    text-decoration: none;
+  }
+  #comments{
+    text-decoration: none;
+    color: #888;
+    display: inline;
+    font-weight: bold;
+  }
+  #votecount{
+    text-decoration: none;
+    color: #888;
+    display: inline;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #submittedby{
+    text-decoration: none;
+    color: #888;
+    font-size: x-small;
+  }
+  ul{
+    list-style-type: none;
+  }
+  .song {
+clear:both;
+margin-bottom:18px;
+padding:8px;
+}
+
+.song-active {
+background-color:#FCE4E4;
+}
+
+.song-list-title {
+margin-bottom:4px;
+}
+
+.song-list-title a {
+font-weight:500;
+font-size:20px;
+line-height:30px;
+margin-bottom:12px;
+text-decoration:none;
+color:#3a3a3a;
+}
+
+.song-mini-pause {
+font-size:14px;
+vertical-align:2px;
+padding-left:3px;
+padding-right:2px;
+}
+
+.song-submitter {
+display:inline-block;
+font-size:16px;
+line-height:16px;
+}
+.song-submitter-avatar {
+width:32px;
+border-radius:32px;
+display:inline-block;
+vertical-align:bottom;
+}
+
+.song-submitter-name {
+display:inline-block;
+margin-left:0!important;
+}
+
+.song-comments-label {
+display:inline-block;
+margin-left:4px;
+}
+
+.song-metainfo a {
+text-decoration:none;
+margin-left:8px;
+color:#666;
+}
+.upvote-container {
+float:left;
+width:50px;
+text-align:center;
+margin-right:12px;
+}
+
+.upvote-container{
+margin-top:20px;
+text-decoration:none;
+font-size:12px;
+}
+
+.upvote-container{
+font-size:32px;
+}
+
+.arrow-up {
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-bottom:18px solid #4f535e;
+margin:5px 0 9px 7px;
+}
+
+.arrow-up.clicked {
+border-bottom:18px solid #c23c45;
+}
+
+.arrow-up:hover {
+border-bottom:18px solid #09BC06;
+cursor:pointer;
+}
+
+.vote-count {
+font-size:20px;
+margin-bottom:15px;
+color: Green;
+}
+#upvotecarrot{
+text-decoration: none;
+}
+  </style>
+<body id="main">
+<ul>
+  <% @links.order("created_at").each do |link| %>
+  <div class='song'>
+    <div class='upvote-container'>
+      <!--<div class='arrow-up'></div>-->
+          <%= link_to "^", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, id: "upvotecarrot"%>
+    
+      
+
+      <p class='vote-count'>
+      RQ <%=(link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
+      </p>
+      </div>
+        <div class='song-details-container'>
+          <h3 class='song-list-title song-title-link'>
+            <%= link_to link.title, link.url, :target => '_blank'%>
+          </h3>
+        <div id=submittedby>
+          <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " %>
+          <%= link_to link.user.username, controller: "user", action: "show", id: link.user.id %>
+        </div>
+        <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
+    </div>
+  </div>
+  <% end %>
+</ul>
+<%= will_paginate @links %>
+</body>
+<script>
+>>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690
 </script>
 <html>
