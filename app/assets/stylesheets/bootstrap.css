@@ -5003,6 +5003,11 @@ a.list-group-item-danger.active:focus {
 .panel-body {
   padding: 15px;
 }
+.panel-body2 {
+  padding: 15px;
+  width: 1000px;
+  height: 150px;
+}
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;

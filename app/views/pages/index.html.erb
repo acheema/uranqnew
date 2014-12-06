@@ -10,7 +10,7 @@
         </div>
         <div class='panel-body'>
           <p>
-            insert product description here. insert product description here. insert product description here. insert product           description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here.
+            <%= link.description[0..100] %>...
           </p>
           <i><%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " %>
             <%= link_to link.user.username, controller: "user", action: "show", id: link.user.id %></i><br><br>

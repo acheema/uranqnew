@@ -15,7 +15,7 @@
         <ul>
           <% @link.comments.each do |comment| %>
           <li class='well'>
-            <p><b><%= comment.user.username %></b> - <i><%=comment.user.position%></i></p>
+            <p><b><%= link_to comment.user.username, controller: "user", action: "show", id: comment.user.id %></b> - <i><%=comment.user.position%></i></p>
             <p><%= comment.message %></p>
           </li>
           <% end %>

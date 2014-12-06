@@ -2,7 +2,7 @@
 
   <div class="col-md-2 login-box">
     <div class="row">
-      <img class="profile-pic" src="http://static3.wikia.nocookie.net/__cb20110516212211/simpsons/pt/images/b/bf/Homer-doh-square.jpg" alt="Profile Picture" class="img-thumbnail" >
+      <img class="profile-pic" src="http://static3.wikia.nocookie.net/__cb20110516212211/simpsons/pt/images/b/bf/Homer-doh-square.jpg" alt="Profile Picture" >
     </div>
     <p align='left'>
       <b>User: </b><%= @user.username %><br>
@@ -20,7 +20,7 @@
       <div class='panel-heading'>
         <h3 align='left'>About Me</h3>
       </div>
-      <div class="panel-body">
+      <div class="panel-body2">
         <p>
           This is the biography of the user.
         </p>
@@ -32,11 +32,20 @@
       <h3 align='left'>Recent Activities</h3>
     </div>
     <div class="panel-body">
-      <p>
+      <p> Recent Comments
         <ol>
         <% @user.comments.each do |c| %>
           <li>
         <%= c.message %><br><br>
+          </li>
+        <% end %>
+          </ol>
+      </p>
+      <p> Recent Submissions
+        <ol>
+        <% @user.links.each do |l| %>
+          <li>
+        <%= link_to l.title, l%><br><br>
           </li>
         <% end %>
           </ol>
