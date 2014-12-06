@@ -151,7 +151,8 @@ text-decoration: none;
             <%= link_to link.title, link.url, :target => '_blank'%>
           </h3>
         <div id=submittedby>
-          <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " + link.user.username %><br>
+          <%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " %>
+          <%= link_to link.user.username, controller: "user", action: "show", id: link.user.id %>
         </div>
         <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
     </div>

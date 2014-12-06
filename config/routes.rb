@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user/show'
+
   root 'pages#index'
 
   get 'pages/about' => 'pages#about'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get 'links/new'
 
   get 'links/create'
+
+  match 'user/:id' => 'user#show', via: :get
 
   devise_for :users
 

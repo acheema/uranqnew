@@ -1,0 +1,8 @@
+
+
+<h1>User: <%= @user.username %></h1>
+<br>
+
+<h2>Title: <%= @user.position %></h2>
+
+<h2> Overall RQ: <%= @user.votes.where(:up => true).count %>
