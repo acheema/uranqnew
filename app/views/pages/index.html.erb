@@ -1,47 +1,47 @@
 <body>
   <ul>
     <% @links.order("created_at").each do |link| %>
-      <div class='row'>
-        <div class='col-md-2'></div>
-        <div class='col-md-8 panel panel-default' id='remove-pad'>
-            <div class='panel-heading'>
-<!--               <h3 align='center'><%= link_to link.title, link.url, :target => '_blank'%></h3> -->
-              <h2 align='center'><%= link_to link.title, link %></h2>
-            </div>
-            <div class='panel-body'>
-              <p>
-              insert product description here. insert product description here. insert product description here. insert product           description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here.
-              </p>
-              <i><%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " %>
-              <%= link_to link.user.username, controller: "user", action: "show", id: link.user.id %></i><br><br>
-              <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">
-                  <%= link_to "&#9650;".html_safe, votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, id: "upvotecarrot"%>
-                </button>
-                <button type="button" class="btn btn-default disabled">
-                  <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
-                </button>
-                <button type="button" class="btn btn-default">
-                  <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
-                </button>
-              </div>
-            </div>
+    <div class='row'>
+      <div class='col-md-2'></div>
+      <div class='col-md-8 panel panel-default login-box' id='remove-pad'>
+        <div class='panel-heading'>
+          <!--               <h3 align='center'><%= link_to link.title, link.url, :target => '_blank'%></h3> -->
+          <h2 align='center'><%= link_to link.title, link %></h2>
         </div>
-        <div class='col-md-2'></div>
+        <div class='panel-body'>
+          <p>
+            insert product description here. insert product description here. insert product description here. insert product           description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here. insert product description here.
+          </p>
+          <i><%= "Submitted " + time_ago_in_words(link.created_at) + " ago by " %>
+            <%= link_to link.user.username, controller: "user", action: "show", id: link.user.id %></i><br><br>
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" id="clickable-div">
+              <%= link_to "&#9650;".html_safe, votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, id: "upvotecarrot" %>
+            </button>
+            <button type="button" class="btn btn-default disabled">
+              <%= (link.votes.where(:up => true).count - link.votes.where(:up => false).count).to_s %>
+            </button>
+            <button type="button" class="btn btn-default">
+              <%= link_to link.comments.count.to_s + " comments", link, id: "comments"%>
+            </button>
+          </div>
         </div>
- 
+      </div>
+      <div class='col-md-2'></div>
+    </div>
+
     <% end %>
+
+    <%= will_paginate @links, class: "pagination" %>
   </ul>
-  <%= will_paginate @links %>
 </body>
 <script>
-function upvotearrow(link){
-  alert(link)
-      $.ajax({
-        type: 'POST',
-        url: link,
-        success: alert("K"),
+  function upvotearrow(link){
+    alert(link)
+    $.ajax({
+      type: 'POST',
+      url: link,
+      success: alert("K"),
     });
-}
+  }
 </script>
-<html>
