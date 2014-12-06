@@ -1,63 +1,39 @@
-<<<<<<< HEAD
 <div class='row'>
   <div class='col-md-2'></div>
   <div class='col-md-8'>
     <div class='row' id='panel-row'>
       <h1 align='center'><%= link_to @link.title, @link.url, :target => '_blank' %></h1>
     </div>
-    <div class='row' id='panel-row'>
+    <div class='row'>
       <h4 align='left'>Description</h4>
-      <p> <%= @link.description %> <br></p>
+      <p> <%= @link.description %> <br><br></p>
     </div>
-    <div class='row' id='panel-row'>
-      <%= form_for(@comment) do |f| %>
-<br>
-<h4>Reviews</h4>
-=======
-<style>
-h1{
-  text-align: center;
-}
-#content{
-  margin-left: 10px;
-  margin-right: 10px;
-}
-</style>
-<div id="content">
-<h1><%= link_to @link.title, @link.url, :target => '_blank' %></h1>
-<h4>Description</h4>
-<p> <%= @link.description %> <br></p> 
-<%= form_for(@comment) do |f| %>
+    <div class='row panel panel-default' id='remove-pad'>
+      <div class='panel-heading panel-title'>Reviews</div>
+      <div class='panel-body'>
+        <%= form_for(@comment) do |f| %>
+        <ul>
+          <% @link.comments.each do |comment| %>
+          <li class='well'>
+            <p><b><%= comment.user.username %></b> - <i><%=comment.user.position%></i></p>
+            <p><%= comment.message %></p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
-
-
-<br>
-<h4>Comments</h4>
->>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690
-  <ol>
-  <% @link.comments.each do |comment| %>
-  <li>
-    <p><%= comment.message %></p>
-    <p><strong>Author</strong>: <%= comment.user.username %> - <%=comment.user.position%> </p>
-  </li>
-  <% end %>
-</ol>
-    <br><br>
     <div class="field">
-    <%= f.label :Add_review %><br />
-    <%= f.text_area :message, :size => "60x4" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit"%>
-  </div>
-
-  <%= f.hidden_field :link_id, :value => @link.id %>
-<% end %>
-<<<<<<< HEAD
+      <%= f.label :Add_review %><br />
+      <%= f.text_area :message, :size => "60x4" %>
     </div>
-  </div>
-  <div class='col-md-2'></div>
-=======
+    <div class="actions">
+      <%= f.submit "Submit"%>
+    </div>
+
+    <%= f.hidden_field :link_id, :value => @link.id %>
+    <% end %>
+    </div>
 </div>
->>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690
-</div>
+<div class='col-md-2'></div>
+  

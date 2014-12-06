@@ -13,13 +13,18 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD
-#main-panel {
+#remove-pad {
   padding: 0;
+}
+
+#insert-side-margin {
+  margin: 0 10px;
+}
+
+#insert-margins {
+  margin: 10px;
 }
 
 #panel-row {
   padding: 3px 20px;
 }
-=======
->>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690

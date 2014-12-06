@@ -1,8 +1,42 @@
+<body>
+  
+  <div class="col-md-2">
+    <div class="row">
+      <img src="http://static3.wikia.nocookie.net/__cb20110516212211/simpsons/pt/images/b/bf/Homer-doh-square.jpg" alt="Profile Picture" class="img-thumbnail" >
+    </div>
+    <p align='left'><b>User:</b> <%= @user.username %></p>
+    <p align='left'><b>Title:</b> <%= @user.position %></p>
+    <br>
+    <pre align='left'>
+    #100
+    Reviewer Ranking
+    Overall RQ: <%= @user.votes.where(:up => true).count %></pre>
+    <br>
+    <p align='left'><a href="mailto:<%= @user.email %>" target="_top"><%= @user.email %></a></p>
+    <p align='left'><a href="">Send a message</a></p>
+      
+    
+  </div>
+  
+  <div class="col-md-10">
+    <div class='panel panel-default'>
+      <div class='panel-heading'>
+        <h3 align='left'>About Me</h3>
+      </div>
+      <div class='row' id='panel-row'>
+        <p>This is the biography of the user.</p>
+        <p>This is the biography of the user.</p>
+        <p>This is the biography of the user.</p>
+        <p>This is the biography of the user.</p>
+      </div>
+      <div class='row' id='panel-row'>
+      </div>
+    </div>
+    <h3 align='left'>Recent Activities</h3>
+  </div>
+    
+  </div>
 
 
-<h1>User: <%= @user.username %></h1>
-<br>
 
-<h2>Title: <%= @user.position %></h2>
-
-<h2> Overall RQ: <%= @user.votes.where(:up => true).count %>
+<!-- style="width:140px;height:140px" -->

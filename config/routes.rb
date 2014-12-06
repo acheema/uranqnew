@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-=======
+
   get 'user/show'
 
->>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690
   root 'pages#index'
 
   get 'pages/about' => 'pages#about'
@@ -19,11 +17,9 @@ Rails.application.routes.draw do
 
   get 'links/create'
 
-<<<<<<< HEAD
-=======
+
   match 'user/:id' => 'user#show', via: :get
 
->>>>>>> b0472c627346a9b6d3784c60ed99a83f1e3eb690
   devise_for :users
 
   resources :links
